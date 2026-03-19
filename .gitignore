@@ -22,4 +22,5 @@ debug*
 # OS X
 .DS_Store
 config.yml
-config.old.yml
+config.old.ymldata/
+logs/
