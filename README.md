@@ -1,6 +1,6 @@
 # prospect-radar
 
-A weighted signal detection pipeline that monitors Portuguese job boards in near real time, used as a prospecting tool to identify companies with operational pain before they hire.
+A weighted detection pipeline that monitors Portuguese job boards in near real time. Used as a prospecting tool to signal companies with operational pain.
 
 ---
 
@@ -90,7 +90,6 @@ prospect-radar/
 │   └── monitor.log          # runtime logs
 │
 ├── config.example.yml       # full config structure with placeholder values
-├── config.yml               # your scoring rules — gitignored, never committed
 │
 ├── main.py                  # entry point and run loop
 ├── scraper.py               # OLX fetch, Tier 1 gate, company name extraction
