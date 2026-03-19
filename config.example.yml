@@ -1,0 +1,83 @@
+search:
+  mode: category  # category | keyword — toggle here
+
+  # Used in keyword mode only
+  keywords:
+    - your keyword here
+    - another keyword
+
+  # Used in category mode — must match keys in scraper.py CATEGORY_URLS
+  categories:
+    - administrativo-e-secretariado
+    - it-e-telecomunicacoes
+    - comercial
+
+tier1:
+  # Gate runs on title only, before loading the full ad page.
+  # Purpose: discard obvious non-matches (construction, healthcare, etc.)
+  # If NONE of these keywords appear in the title → ad is discarded immediately.
+  # Do NOT require technical language here — that is Tier 2's job.
+  gate_keywords:
+    - your gate keyword
+    - another gate keyword
+
+scoring:
+  categories:
+
+    work_type_fit:
+      cap: 10               # Maximum points this category can contribute
+      keywords:
+        keyword_one: 8      # High-signal technical keyword
+        keyword_two: 5      # Medium-signal role keyword
+        keyword_three: 3    # Weak alone, useful in combinations
+
+    optimization_signals:
+      cap: 10
+      keywords:
+        keyword_four: 8
+        keyword_five: 7
+
+    urgency_signals:
+      cap: 6
+      keywords:
+        keyword_six: 5
+        keyword_seven: 6
+
+    small_operator_signals:
+      cap: 8
+      keywords:
+        keyword_eight: 7
+        keyword_nine: 5
+
+    contractor_signals:
+      cap: 4
+      keywords:
+        keyword_ten: 5
+
+    soft_signals:
+      cap: 6
+      keywords:
+        keyword_eleven: 6
+        keyword_twelve: 4
+
+  # First match = full value. Each repeat of same keyword = this fraction of face value.
+  redundancy_buffer: 0.15
+
+  cooccurrence_bonuses:
+    cap: 8                  # Total bonus points available across all pairs
+    pairs:
+      - keywords: [keyword_one, keyword_eleven]
+        bonus: 6
+      - keywords: [keyword_two, keyword_four]
+        bonus: 5
+
+alerts:
+  min_score: 12             # Minimum score to write to CSV
+  telegram_threshold: 35    # Score that fires an immediate Telegram alert
+
+schedule:
+  interval_minutes: random  # 'random' = 18–35 min. Or set an integer.
+  pages_per_category: 4
+  delay_between_requests: random  # 'random' = 4–12s between ad page loads
+  category_order: random
+  user_agent: rotation

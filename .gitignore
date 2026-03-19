@@ -1,0 +1,25 @@
+# Byte-compiled / C extensions
+__pycache__/
+*.py[cod]
+*.class
+
+# Virtual environments 
+.venv/
+venv/
+env/
+ENV/
+
+# Data outputs
+*.csv
+*.xlsx
+*.html
+debug*
+
+# IDE
+.vscode/
+.idea/
+
+# OS X
+.DS_Store
+config.yml
+config.old.yml
